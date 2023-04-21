@@ -5,11 +5,13 @@ module com.example.expensetrackerjava {
 
     requires org.controlsfx.controls;
     requires com.dlsc.formsfx;
-    requires validatorfx;
+    requires net.synedra.validatorfx;
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
 
     opens com.example.expensetrackerjava to javafx.fxml;
     exports com.example.expensetrackerjava;
+    exports com.example.expensetrackerjava.controller;
+    opens com.example.expensetrackerjava.controller to javafx.fxml;
 }

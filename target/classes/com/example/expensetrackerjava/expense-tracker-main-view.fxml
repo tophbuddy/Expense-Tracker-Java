@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="985.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.expensetrackerjava.controller.ExpenseTrackerController">
+   <children>
+      <BorderPane layoutX="1.0" layoutY="-1.0" prefHeight="600.0" prefWidth="985.0">
+         <center>
+      
+            <Button onAction="#onTestButtonClick" text="Click Me!" BorderPane.alignment="CENTER" />
+         </center></BorderPane>
+      <Label fx:id="testText" />
+   </children>
+</AnchorPane>
