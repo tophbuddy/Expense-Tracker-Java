@@ -10,6 +10,7 @@ module com.example.expensetrackerjava {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
 
+    opens com.example.expensetrackerjava.model to javafx.base;
     opens com.example.expensetrackerjava to javafx.fxml;
     exports com.example.expensetrackerjava;
     exports com.example.expensetrackerjava.controller;

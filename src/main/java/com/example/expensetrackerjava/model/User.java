@@ -3,12 +3,12 @@ package com.example.expensetrackerjava.model;
 import java.util.Objects;
 
 public class User {
-    protected String userName;
-    protected String password;
-    protected String firstName;
-    protected String lastName;
-    protected String email;
-    protected String phone;
+    private String userName;
+    private String password;
+    private String firstName;
+    private String lastName;
+    private String email;
+    private String phone;
 
     public User(){}
 
