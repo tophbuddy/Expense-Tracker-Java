@@ -1,9 +1,7 @@
 package com.example.expensetrackerjava.controller;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -19,16 +17,25 @@ public class HomePageController {
 
     @FXML
     public void initialize() {
+        expensePageButton.setOnAction(event -> goToExpensePage());
         AnchorPane.setTopAnchor(expensePageButton, 100.0);
         AnchorPane.setLeftAnchor(expensePageButton, 100.0);
     }
 
     @FXML
-    private void goToExpensePage(ActionEvent event) {
+    private void goToExpensePage() {
         try {
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            Parent root = FXMLLoader.load(getClass().getResource("ExpensePage.fxml"));
-            stage.setScene(new Scene(root, 300, 200));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/ExpensePage.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setTitle("Expense Page");
+            stage.show();
+
+            // Close the current (home) stage
+            Stage homeStage = (Stage) expensePageButton.getScene().getWindow();
+            homeStage.close();
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -1,0 +1,15 @@
+# config.yml
+
+database:
+  type: sqlite
+  name: expense-tracker-db.sqlite
+
+app:
+  title: Expense Tracker
+  width: 800
+  height: 600
+  css: /css/HomePage.css
+
+views:
+  home: /views/HomePage.fxml
+  expense: /views/ExpensePage.fxml
