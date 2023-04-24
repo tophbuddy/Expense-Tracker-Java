@@ -1,5 +1,9 @@
 package com.example.expensetrackerjava.model;
 
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
+
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -13,67 +17,89 @@ public class Expense {
     // Household Items/Supplies, Personal, Debt, Retirement, Education, Savings, Gifts/Donations, Entertainment
     // Each will have example sub-categories. Will have option to add subcategories
 
-    private LocalDate date;
-    private String category;
-    private String subCategory;
-    private String description;
-    private double amount;
+    // Using Simple JavaFX Properties for data binding and automatic UI updates when models change
+
+    private final SimpleObjectProperty<LocalDate> date;
+    private final SimpleStringProperty category;
+    private final SimpleStringProperty subCategory;
+    private final SimpleStringProperty description;
+    private final SimpleDoubleProperty amount;
 
     public Expense(LocalDate date, String category, String subCategory, String description, double amount) {
-        this.date = date;
-        this.category = category;
-        this.subCategory = subCategory;
-        this.description = description;
-        this.amount = amount;
+        this.date = new SimpleObjectProperty<>(date);;
+        this.category = new SimpleStringProperty(category);
+        this.subCategory = new SimpleStringProperty(subCategory);
+        this.description = new SimpleStringProperty(description);
+        this.amount = new SimpleDoubleProperty(amount);;
     }
 
-    public LocalDate getDate() {
+    public SimpleObjectProperty<LocalDate> dateProperty() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
-        this.date = date;
+    public LocalDate getDate() {
+        return date.get();
     }
 
-    public String getCategory() {
+    public void setDate(LocalDate date) {
+        this.date.set(date);
+    }
+
+    public SimpleStringProperty categoryProperty() {
         return category;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public String getCategory() {
+        return category.get();
     }
 
-    public String getSubCategory() {
+    public void setCategory(String category) {
+        this.category.set(category);
+    }
+
+    public SimpleStringProperty subCategoryProperty() {
         return subCategory;
     }
 
-    public void setSubCategory(String subCategory) {
-        this.subCategory = subCategory;
+    public String getSubCategory() {
+        return subCategory.get();
     }
 
-    public String getDescription() {
+    public void setSubCategory(String subCategory) {
+        this.subCategory.set(subCategory);
+    }
+
+    public SimpleStringProperty descriptionProperty() {
         return description;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public String getDescription() {
+        return description.get();
     }
 
-    public double getAmount() {
+    public void setDescription(String description) {
+        this.description.set(description);
+    }
+
+    public SimpleDoubleProperty amountProperty() {
         return amount;
     }
 
+    public double getAmount() {
+        return amount.get();
+    }
+
     public void setAmount(double amount) {
-        this.amount = amount;
+        this.amount.set(amount);
     }
 
     @Override
     public String toString() {
         return "Expense{" +
                 "date=" + date +
-                ", category='" + category + '\'' +
-                ", subCategory='" + subCategory + '\'' +
-                ", description='" + description + '\'' +
+                ", category=" + category +
+                ", subCategory=" + subCategory +
+                ", description=" + description +
                 ", amount=" + amount +
                 '}';
     }
@@ -83,9 +109,9 @@ public class Expense {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Expense expense = (Expense) o;
-        return Double.compare(expense.amount, amount) == 0 && Objects.equals(date, expense.date) &&
-                Objects.equals(category, expense.category) && Objects.equals(subCategory, expense.subCategory) &&
-                Objects.equals(description, expense.description);
+        return Objects.equals(date, expense.date) && Objects.equals(category, expense.category) &&
+                Objects.equals(subCategory, expense.subCategory) && Objects.equals(description, expense.description) &&
+                Objects.equals(amount, expense.amount);
     }
 
     @Override

@@ -15,12 +15,12 @@ import java.io.IOException;
 public class HomePageController {
 
     @FXML
-    private Button goToExpensePageButton;
+    private Button expensePageButton;
 
     @FXML
     public void initialize() {
-        AnchorPane.setTopAnchor(goToExpensePageButton, 100.0);
-        AnchorPane.setLeftAnchor(goToExpensePageButton, 100.0);
+        AnchorPane.setTopAnchor(expensePageButton, 100.0);
+        AnchorPane.setLeftAnchor(expensePageButton, 100.0);
     }
 
     @FXML

@@ -13,7 +13,17 @@
             prefHeight="400.0" prefWidth="600.0">
 
     <children>
-        <Button fx:id="goToHomePageButton" text="Go to Home Page" onAction="#goToHomePage" />
+        <Button fx:id="homePageButton" text="Go to Home Page" onAction="#goToHomePage" AnchorPane.bottomAnchor="10" AnchorPane.rightAnchor="10" />
+        <TableView fx:id="expenseTable" AnchorPane.topAnchor="10" AnchorPane.leftAnchor="10" AnchorPane.rightAnchor="10"
+                   AnchorPane.bottomAnchor="50">
+            <columns>
+                <TableColumn fx:id="dateColumn" text="Date" />
+                <TableColumn fx:id="categoryColumn" text="Category" />
+                <TableColumn fx:id="subCategoryColumn" text="Sub-Category" />
+                <TableColumn fx:id="descriptionColumn" text="Description" />
+                <TableColumn fx:id="amountColumn" text="Amount" />
+            </columns>
+        </TableView>
     </children>
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
