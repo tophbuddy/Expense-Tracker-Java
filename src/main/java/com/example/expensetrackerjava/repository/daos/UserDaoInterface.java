@@ -6,11 +6,11 @@ import java.util.Optional;
 
 public interface UserDaoInterface {
 
-    boolean userCreated(User user);
+    boolean createUser(User user);
 
     Optional<User> getUser(String username);
 
-    boolean userUpdated(User user);
+    boolean updateUser(User user);
 
-    boolean userDeleted(String username);
+    boolean deleteUser(String username);
 }

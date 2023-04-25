@@ -1,98 +1,93 @@
 package com.example.expensetrackerjava.model;
 
-import java.util.Objects;
+import javafx.beans.property.SimpleStringProperty;
 
 public class User {
-    private String userName;
-    private String password;
-    private String firstName;
-    private String lastName;
-    private String email;
-    private String phone;
+    private final SimpleStringProperty username;
+    private final SimpleStringProperty password;
+    private final SimpleStringProperty firstName;
+    private final SimpleStringProperty lastName;
+    private final SimpleStringProperty email;
+    private final SimpleStringProperty phone;
 
-    public User(){}
-
-    public User(String userName, String password, String firstName, String lastName, String email, String phone) {
-        this.userName = userName;
-        this.password = password;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.phone = phone;
+    public User(String username, String password, String firstName, String lastName, String email, String phone) {
+        this.username = new SimpleStringProperty(username);
+        this.password = new SimpleStringProperty(password);
+        this.firstName = new SimpleStringProperty(firstName);
+        this.lastName = new SimpleStringProperty(lastName);
+        this.email = new SimpleStringProperty(email);
+        this.phone = new SimpleStringProperty(phone);
     }
 
-    public String getUserName() {
-        return userName;
+    public SimpleStringProperty usernameProperty() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public String getUsername() {
+        return username.get();
     }
 
-    public String getPassword() {
+    public void setUsername(String username) {
+        this.username.set(username);
+    }
+
+    public SimpleStringProperty passwordProperty() {
         return password;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public String getPassword() {
+        return password.get();
     }
 
-    public String getFirstName() {
+    public void setPassword(String password) {
+        this.password.set(password);
+    }
+
+    public SimpleStringProperty firstNameProperty() {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public String getFirstName() {
+        return firstName.get();
     }
 
-    public String getLastName() {
+    public void setFirstName(String firstName) {
+        this.firstName.set(firstName);
+    }
+
+    public SimpleStringProperty lastNameProperty() {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public String getLastName() {
+        return lastName.get();
     }
 
-    public String getEmail() {
+    public void setLastName(String lastName) {
+        this.lastName.set(lastName);
+    }
+
+    public SimpleStringProperty emailProperty() {
         return email;
     }
 
+    public String getEmail() {
+        return email.get();
+    }
+
     public void setEmail(String email) {
-        this.email = email;
+        this.email.set(email);
     }
 
     public String getPhone() {
+        return phone.get();
+    }
+
+    public SimpleStringProperty phoneProperty() {
         return phone;
     }
 
     public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "userName='" + userName + '\'' +
-                ", password='" + password + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
-                ", phone='" + phone + '\'' +
-                '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return Objects.equals(userName, user.userName) && Objects.equals(password, user.password) &&
-                Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName) &&
-                Objects.equals(email, user.email) && Objects.equals(phone, user.phone);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(userName, password, firstName, lastName, email, phone);
+        this.phone.set(phone);
     }
 }
