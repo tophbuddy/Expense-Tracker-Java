@@ -10,18 +10,6 @@ import java.io.IOException;
 
 public class ExpenseTrackerApplication extends Application {
 
-//    @Override
-//    public void start(Stage primaryStage) throws IOException {
-//        FXMLLoader loader = new FXMLLoader();
-//        loader.setLocation(getClass().getResource("HomePage.fxml"));
-//        Parent root = loader.load();
-//
-//        Scene scene = new Scene(root);
-//        primaryStage.setScene(scene);
-//        primaryStage.setTitle("Expense Tracker");
-//        primaryStage.show();
-//    }
-
     private static ExpenseTrackerApplication instance;
     private Stage primaryStage;
 

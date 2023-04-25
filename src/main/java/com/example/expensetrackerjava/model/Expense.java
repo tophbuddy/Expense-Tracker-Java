@@ -19,6 +19,8 @@ public class Expense {
 
     // Using Simple JavaFX Properties for data binding and automatic UI updates when models change
 
+    // need to add user variable for database storage
+
     private final SimpleObjectProperty<LocalDate> date;
     private final SimpleStringProperty category;
     private final SimpleStringProperty subCategory;
@@ -26,11 +28,11 @@ public class Expense {
     private final SimpleDoubleProperty amount;
 
     public Expense(LocalDate date, String category, String subCategory, String description, double amount) {
-        this.date = new SimpleObjectProperty<>(date);;
+        this.date = new SimpleObjectProperty<>(date);
         this.category = new SimpleStringProperty(category);
         this.subCategory = new SimpleStringProperty(subCategory);
         this.description = new SimpleStringProperty(description);
-        this.amount = new SimpleDoubleProperty(amount);;
+        this.amount = new SimpleDoubleProperty(amount);
     }
 
     public SimpleObjectProperty<LocalDate> dateProperty() {

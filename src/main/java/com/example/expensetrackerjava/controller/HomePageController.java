@@ -16,6 +16,9 @@ public class HomePageController {
     private Button expensePageButton;
 
     @FXML
+    private Button loginButton;
+
+    @FXML
     public void initialize() {
         expensePageButton.setOnAction(event -> goToExpensePage());
         AnchorPane.setTopAnchor(expensePageButton, 100.0);
