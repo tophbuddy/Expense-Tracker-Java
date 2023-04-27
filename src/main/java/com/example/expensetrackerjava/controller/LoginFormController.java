@@ -29,6 +29,9 @@ public class LoginFormController {
     private Button loginButton;
 
     @FXML
+    private Button registerButton;
+
+    @FXML
     private Label loginStatusLabel;
 
     private UserDao userDao;
@@ -37,6 +40,7 @@ public class LoginFormController {
         userDao = new UserDao(DatabaseConnection.getInstance().getConnection());
     }
 
+    @FXML
     private void handleLogin(ActionEvent event) {
         String username = usernameField.getText().trim();
         String password = passwordField.getText().trim();
@@ -63,6 +67,11 @@ public class LoginFormController {
         } else {
             loginStatusLabel.setText("User not found. Please try again.");
         }
+    }
+
+    @FXML
+    private void handleRegister(ActionEvent event) {
+
     }
 
     private void goToHomePage(ActionEvent event){

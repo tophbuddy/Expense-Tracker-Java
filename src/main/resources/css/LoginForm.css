@@ -1,0 +1,19 @@
+/* LoginForm.css */
+
+.login-form {
+    -fx-font-family: Arial;
+}
+
+.login-form .label{
+    -fx-font-size: 14px;
+    -fx-text-fill: #333;
+}
+
+.login-form .text-field,
+.login-form .password-field {
+    -fx-pref-width: 200px;
+    -fx-padding: 5px;
+    -fx-border-color: #aaa;
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
+}
