@@ -1,19 +1,60 @@
 /* LoginForm.css */
 
-.login-form {
-    -fx-font-family: Arial;
+/* Font family for the Login form */
+.root {
+    -fx-font-family: 'Segoe UI', Arial, sans-serif;
 }
 
+/* Style for the Login form */
+.login-form {
+    -fx-padding: 20;
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #CCCCCC;
+    -fx-border-radius: 5;
+    -fx-border-width: 1;
+    -fx-background-radius: 5;
+}
+
+/* Styles for the Login form title */
+.login-form .title{
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333;
+}
+
+/* Styles for the Login form text labels */
 .login-form .label{
     -fx-font-size: 14px;
-    -fx-text-fill: #333;
+    -fx-text-fill: #333333;
 }
 
-.login-form .text-field,
+/* Styles for Login form text and password fields */
+.login-form .username-field,
 .login-form .password-field {
-    -fx-pref-width: 200px;
-    -fx-padding: 5px;
-    -fx-border-color: #aaa;
-    -fx-border-radius: 4px;
-    -fx-background-radius: 4px;
+    -fx-border-color: #CCCCCC;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-border-width: 1;
+}
+
+/* Styles for Login form buttons */
+.login-form .login-button {
+    -fx-background-color: #007BFF;
+    -fx-text-fill: white;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+}
+
+.login-form .registration-button {
+    -fx-background-color: #2a9df4;
+    -fx-text-fill: white;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+}
+
+/* Style for Login form button hover */
+.login-form .login-button:hover,
+.login-form .registration-button:hover {
+    -fx-background-color: #1ebbae;
+    -fx-opacity: 0.8;
 }
