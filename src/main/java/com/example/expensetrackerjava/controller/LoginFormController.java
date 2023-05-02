@@ -54,7 +54,7 @@ public class LoginFormController {
             return;
         }
 
-        Optional<User> optionalUser = userDao.getUser(username);
+        Optional<User> optionalUser = userDao.getUser(username, password);
 
         if (optionalUser.isPresent()) {
             User user = optionalUser.get();

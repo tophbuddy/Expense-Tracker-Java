@@ -44,23 +44,23 @@ public class ExpensePageController {
     @FXML
     public void initialize() {
 
-        expenses = FXCollections.observableArrayList();
-        expenses.add(new Expense(LocalDate.of(2023,4,2), "Food", "Groceries",
-                "Grocery shopping for dinner", 104.50));
-        expenses.add(new Expense(LocalDate.of(2023,4,7), "Housing", "Mortgage",
-                "Monthly Mortgage payment to Wells Fargo", 4200.80));
-        expenses.add(new Expense(LocalDate.of(2023,4,14), "Personal", "Haircut",
-                "Bottle and the Barber haircut", 50.75));
-        expenses.add(new Expense(LocalDate.of(2023,4,22), "Entertainment", "Alcohol",
-                "Drinks at Rumba", 64.20));
-
-        dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
-        categoryColumn.setCellValueFactory(new PropertyValueFactory<>("category"));
-        subCategoryColumn.setCellValueFactory(new PropertyValueFactory<>("subCategory"));
-        descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
-        amountColumn.setCellValueFactory(new PropertyValueFactory<>("amount"));
-
-        expenseTable.setItems(expenses);
+//        expenses = FXCollections.observableArrayList();
+//        expenses.add(new Expense(LocalDate.of(2023,4,2), "Food", "Groceries",
+//                "Grocery shopping for dinner", 104.50));
+//        expenses.add(new Expense(LocalDate.of(2023,4,7), "Housing", "Mortgage",
+//                "Monthly Mortgage payment to Wells Fargo", 4200.80));
+//        expenses.add(new Expense(LocalDate.of(2023,4,14), "Personal", "Haircut",
+//                "Bottle and the Barber haircut", 50.75));
+//        expenses.add(new Expense(LocalDate.of(2023,4,22), "Entertainment", "Alcohol",
+//                "Drinks at Rumba", 64.20));
+//
+//        dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
+//        categoryColumn.setCellValueFactory(new PropertyValueFactory<>("category"));
+//        subCategoryColumn.setCellValueFactory(new PropertyValueFactory<>("subCategory"));
+//        descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
+//        amountColumn.setCellValueFactory(new PropertyValueFactory<>("amount"));
+//
+//        expenseTable.setItems(expenses);
     }
 
     @FXML

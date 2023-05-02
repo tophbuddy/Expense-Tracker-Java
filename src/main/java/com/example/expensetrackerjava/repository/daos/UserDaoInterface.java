@@ -9,9 +9,9 @@ public interface UserDaoInterface {
 
     boolean createUser(User user);
 
-    Optional<User> getUser(String username);
+    Optional<User> getUser(String username, String password);
 
     boolean updateUser(User user);
 
-    boolean deleteUser(String username);
+    boolean deleteUser(int id);
 }

@@ -1,6 +1,7 @@
 package com.example.expensetrackerjava.model;
 
 import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 
@@ -12,97 +13,125 @@ import java.util.Objects;
  */
 public class Expense {
 
-
-    // Categories will be: Housing, Transportation, Food, Utilities, Clothing, Medical/Healthcare, Insurance,
-    // Household Items/Supplies, Personal, Debt, Retirement, Education, Savings, Gifts/Donations, Entertainment
-    // Each will have example sub-categories. Will have option to add subcategories
-
     // Using Simple JavaFX Properties for data binding and automatic UI updates when models change
 
     // need to add user variable for database storage
 
+    private final SimpleIntegerProperty expenseId;
     private final SimpleObjectProperty<LocalDate> date;
-    private final SimpleStringProperty category;
-    private final SimpleStringProperty subCategory;
+    private final SimpleObjectProperty<Category> category;
     private final SimpleStringProperty description;
     private final SimpleDoubleProperty amount;
+    private final SimpleIntegerProperty userId;
 
-    public Expense(LocalDate date, String category, String subCategory, String description, double amount) {
+    public Expense(int expenseId, LocalDate date, Category category, String description, double amount, int userId) {
+        this.expenseId = new SimpleIntegerProperty(expenseId);
         this.date = new SimpleObjectProperty<>(date);
-        this.category = new SimpleStringProperty(category);
-        this.subCategory = new SimpleStringProperty(subCategory);
+        this.category = new SimpleObjectProperty<>(category);
         this.description = new SimpleStringProperty(description);
         this.amount = new SimpleDoubleProperty(amount);
+        this.userId = new SimpleIntegerProperty(userId);
     }
 
-    public SimpleObjectProperty<LocalDate> dateProperty() {
-        return date;
+    public Expense(LocalDate date, Category category, String description, double amount) {
+        this.expenseId = new SimpleIntegerProperty(0);
+        this.date = new SimpleObjectProperty<>(date);
+        this.category = new SimpleObjectProperty<>(category);
+        this.description = new SimpleStringProperty(description);
+        this.amount = new SimpleDoubleProperty(amount);
+        this.userId = new SimpleIntegerProperty(0);
+    }
+
+    public Expense() {
+        this.expenseId = new SimpleIntegerProperty(0);
+        this.date = new SimpleObjectProperty<LocalDate>(null);
+        this.category = new SimpleObjectProperty<Category>(null);
+        this.description = new SimpleStringProperty("");
+        this.amount = new SimpleDoubleProperty(0.0);
+        this.userId = new SimpleIntegerProperty(0);
+    }
+
+    public int getExpenseId() {
+        return expenseId.get();
+    }
+
+    public SimpleIntegerProperty expenseIdProperty() {
+        return expenseId;
+    }
+
+    public void setExpenseId(int expenseId) {
+        this.expenseId.set(expenseId);
     }
 
     public LocalDate getDate() {
         return date.get();
     }
 
+    public SimpleObjectProperty<LocalDate> dateProperty() {
+        return date;
+    }
+
     public void setDate(LocalDate date) {
         this.date.set(date);
     }
 
-    public SimpleStringProperty categoryProperty() {
-        return category;
-    }
-
-    public String getCategory() {
+    public Category getCategory() {
         return category.get();
     }
 
-    public void setCategory(String category) {
+    public SimpleObjectProperty<Category> categoryProperty() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
         this.category.set(category);
-    }
-
-    public SimpleStringProperty subCategoryProperty() {
-        return subCategory;
-    }
-
-    public String getSubCategory() {
-        return subCategory.get();
-    }
-
-    public void setSubCategory(String subCategory) {
-        this.subCategory.set(subCategory);
-    }
-
-    public SimpleStringProperty descriptionProperty() {
-        return description;
     }
 
     public String getDescription() {
         return description.get();
     }
 
-    public void setDescription(String description) {
-        this.description.set(description);
+    public SimpleStringProperty descriptionProperty() {
+        return description;
     }
 
-    public SimpleDoubleProperty amountProperty() {
-        return amount;
+    public void setDescription(String description) {
+        this.description.set(description);
     }
 
     public double getAmount() {
         return amount.get();
     }
 
+    public SimpleDoubleProperty amountProperty() {
+        return amount;
+    }
+
     public void setAmount(double amount) {
         this.amount.set(amount);
+    }
+
+    public int getUserId() {
+        return userId.get();
+    }
+
+    public SimpleIntegerProperty userIdProperty() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId.set(userId);
     }
 
     @Override
     public String toString() {
         return "Expense{" +
-                "date=" + date +
+                "expenseId=" + expenseId +
+                ", date=" + date +
                 ", category=" + category +
-                ", subCategory=" + subCategory +
                 ", description=" + description +
                 ", amount=" + amount +
+                ", userId=" + userId +
                 '}';
     }
 
@@ -111,13 +140,13 @@ public class Expense {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Expense expense = (Expense) o;
-        return Objects.equals(date, expense.date) && Objects.equals(category, expense.category) &&
-                Objects.equals(subCategory, expense.subCategory) && Objects.equals(description, expense.description) &&
-                Objects.equals(amount, expense.amount);
+        return Objects.equals(expenseId, expense.expenseId) && Objects.equals(date, expense.date) &&
+                Objects.equals(category, expense.category) && Objects.equals(description, expense.description) &&
+                Objects.equals(amount, expense.amount) && Objects.equals(userId, expense.userId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(date, category, subCategory, description, amount);
+        return Objects.hash(expenseId, date, category, description, amount, userId);
     }
 }
