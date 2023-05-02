@@ -69,11 +69,6 @@ public class LoginFormController {
         }
     }
 
-    @FXML
-    private void handleRegister(ActionEvent event) {
-
-    }
-
     private void goToHomePage(ActionEvent event){
         try {
             Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();

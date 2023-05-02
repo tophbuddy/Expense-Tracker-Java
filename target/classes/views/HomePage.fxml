@@ -15,21 +15,28 @@
     <stylesheets>
         <URL value="@../css/HomePage.css"/>
     </stylesheets>
-
-    <VBox alignment="CENTER"
-          spacing="10.0"
-          AnchorPane.bottomAnchor="0.0"
-          AnchorPane.leftAnchor="0.0"
-          AnchorPane.rightAnchor="0.0"
-          AnchorPane.topAnchor="0.0">
-        <padding>
-            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-        </padding>
-        <children>
-            <Label text="Welcome to Expense Tracker"/>
-            <Button fx:id="expensePageButton" text="Go to Expenses" onAction="#goToExpensePage"/>
-        </children>
-    </VBox>
-
+    <children>
+        <StackPane AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <Group StackPane.alignment="CENTER">
+                    <children>
+                        <VBox alignment="CENTER" spacing="10.0">
+                            <padding>
+                                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+                            </padding>
+                            <children>
+                                <Label text="Welcome to Expense Tracker"/>
+<!--                                <Button fx:id="expensePageButton" text="Go to Expenses" onAction="#goToExpensePage"/>-->
+                                    <HBox alignment="CENTER" spacing="20">
+                                        <Button fx:id="loginButton" text="Login" onAction="#goToLoginPage"/>
+                                        <Button fx:id="registrationButton" text="Register" onAction="#goToRegistrationPage"/>
+                                    </HBox>
+                            </children>
+                        </VBox>
+                    </children>
+                </Group>
+            </children>
+        </StackPane>
+    </children>
 </AnchorPane>
 

@@ -5,6 +5,7 @@
 <?import javafx.scene.layout.*?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Group?>
 <AnchorPane prefHeight="400.0"
             prefWidth="600.0"
             xmlns="http://javafx.com/javafx/11.0.2"
@@ -14,26 +15,34 @@
         <URL value="@../css/RegistrationForm.css" />
     </stylesheets>
     <children>
-        <VBox alignment="CENTER" layoutX="175.0" layoutY="105.0" spacing="20" styleClass="registration-form">
-            <Label styleClass="title" text="Expense Tracker Account Registration" />
-            <GridPane alignment="CENTER" hgap="10" vgap="10">
-                <padding>
-                    <Insets top="20" right="20" bottom="20" left="20"/>
-                </padding>
-                <Label text="Username:" GridPane.rowIndex="0"/>
-                <TextField fx:id="usernameField" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
-                <Label text="Password:" GridPane.rowIndex="1"/>
-                <PasswordField fx:id="passwordField" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
-                <Label text="First Name:" GridPane.rowIndex="2"/>
-                <TextField fx:id="firstNameField" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
-                <Label text="Last Name:" GridPane.rowIndex="3"/>
-                <TextField fx:id="lastNameField" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
-                <Label text="Email:" GridPane.rowIndex="4"/>
-                <TextField fx:id="emailField" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
-                <Label text="Phone Number:" GridPane.rowIndex="5"/>
-                <TextField fx:id="phoneNumberField" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
-                <Button fx:id="registrationButton" text="Confirm Register" onAction="#handleRegister" GridPane.rowIndex="6" GridPane.columnIndex="0" styleClass="registration-button"/>
-            </GridPane>
-        </VBox>
+        <StackPane AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <Group StackPane.alignment="CENTER">
+                    <children>
+                        <VBox alignment="CENTER" spacing="20" styleClass="registration-form">
+                            <Label styleClass="title" text="Expense Tracker Account Registration" />
+                            <GridPane alignment="CENTER" hgap="10" vgap="10">
+                                <padding>
+                                    <Insets top="20" right="20" bottom="20" left="20"/>
+                                </padding>
+                                <Label text="Username:" GridPane.rowIndex="0"/>
+                                <TextField fx:id="usernameField" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                                <Label text="Password:" GridPane.rowIndex="1"/>
+                                <PasswordField fx:id="passwordField" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                                <Label text="First Name:" GridPane.rowIndex="2"/>
+                                <TextField fx:id="firstNameField" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                                <Label text="Last Name:" GridPane.rowIndex="3"/>
+                                <TextField fx:id="lastNameField" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+                                <Label text="Email:" GridPane.rowIndex="4"/>
+                                <TextField fx:id="emailField" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+                                <Label text="Phone Number:" GridPane.rowIndex="5"/>
+                                <TextField fx:id="phoneNumberField" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+                                <Button fx:id="registrationButton" text="Confirm Register" onAction="#handleRegister" GridPane.rowIndex="6" GridPane.columnIndex="0" styleClass="registration-button" mnemonicParsing="false"/>
+                            </GridPane>
+                        </VBox>
+                    </children>
+                </Group>
+            </children>
+        </StackPane>
     </children>
 </AnchorPane>

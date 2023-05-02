@@ -1,9 +1,11 @@
 /* HomePage.css */
 
+/* Font family for the Home Page */
 .root {
     -fx-background-color: #f0f0f0;
 }
 
+/* Style for Home Page buttons */
 .button {
     -fx-font-size: 14px;
     -fx-text-fill: white;
@@ -11,6 +13,13 @@
     -fx-padding: 10px;
 }
 
+/* Styles for the Home Page text labels */
+.label{
+    -fx-font-size: 24px;
+    -fx-text-fill: #333333;
+}
+
+/* Style for Home Page buttons hover */
 .button:hover {
     -fx-background-color: #0057a6;
 }

@@ -32,7 +32,7 @@ public class ExpenseTrackerApplication extends Application {
         Parent root = loader.load();
         Scene scene = new Scene(root, 800, 600);
         primaryStage.setScene(scene);
-        primaryStage.setTitle("Expense Tracker");
+        primaryStage.setTitle("Expense Tracker Home");
         primaryStage.show();
     }
 
@@ -41,8 +41,34 @@ public class ExpenseTrackerApplication extends Application {
         Parent root = loader.load();
         Scene scene = new Scene(root, 800, 600);
         primaryStage.setScene(scene);
-        primaryStage.setTitle("Expense Tracker");
+        primaryStage.setTitle("Expenses");
         primaryStage.show();
+    }
+
+    public void showLoginPage() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/LoginForm.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root, 800, 600);
+            primaryStage.setScene(scene);
+            primaryStage.setTitle("Expense Tracker Login");
+            primaryStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void showRegistrationPage() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/RegistrationForm.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root, 800, 600);
+            primaryStage.setScene(scene);
+            primaryStage.setTitle("Expense Tracker Account Registration");
+            primaryStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void main(String[] args) {

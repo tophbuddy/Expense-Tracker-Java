@@ -1,0 +1,47 @@
+/* RegistrationForm.css */
+
+/* Font family for the Registration form */
+.root {
+    -fx-font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+/* Style for the Registration form */
+.registration-form {
+    -fx-padding: 20;
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #CCCCCC;
+    -fx-border-radius: 5;
+    -fx-border-width: 1;
+    -fx-background-radius: 5;
+}
+
+/* Styles for the Registration form title */
+.registration-form .title{
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333;
+}
+
+/* Styles for the Registration form text labels */
+.registration-form .label{
+    -fx-font-size: 14px;
+    -fx-text-fill: #333333;
+}
+
+/* Styles for Registration form text and password fields */
+.registration-form .text-field,
+.registration-form .password-field {
+    -fx-border-color: #CCCCCC;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-border-width: 1;
+}
+
+/* Style for registration confirmation button */
+.registration-form .registration-button {
+    -fx-background-color: #2a9df4;
+    -fx-text-fill: white;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-pref-width: 150px;
+}
