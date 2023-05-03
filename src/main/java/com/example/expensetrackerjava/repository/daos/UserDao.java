@@ -61,7 +61,7 @@ public class UserDao implements UserDaoInterface {
             ResultSet resultSet = selectUserStmt.executeQuery();
 
             if (resultSet.next()) {
-                int userId = resultSet.getInt("user_id");
+                int userId = resultSet.getInt("id");
                 String firstName = resultSet.getString("first_name");
                 String lastName = resultSet.getString("last_name");
                 String email = resultSet.getString("email");
