@@ -5,6 +5,7 @@ import com.example.expensetrackerjava.model.User;
 import com.example.expensetrackerjava.repository.DatabaseConnection;
 import com.example.expensetrackerjava.repository.daos.UserDao;
 import com.example.expensetrackerjava.repository.daos.UserDaoInterface;
+import com.example.expensetrackerjava.session.SessionManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -60,7 +61,8 @@ public class LoginFormController {
             User user = optionalUser.get();
             if (user.getPassword().equals(password)) {
                 loginStatusLabel.setText("Login successful");
-                goToHomePage(event);
+                SessionManager.getInstance().setCurrentUser(user);
+                goToExpensePage(event);
             } else {
                 loginStatusLabel.setText("Password is incorrect. Please try again.");
             }
@@ -69,11 +71,11 @@ public class LoginFormController {
         }
     }
 
-    private void goToHomePage(ActionEvent event){
+    private void goToExpensePage(ActionEvent event){
         try {
             Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             currentStage.close();
-            ExpenseTrackerApplication.getInstance().showHomePage();
+            ExpenseTrackerApplication.getInstance().showExpensePage();
         } catch (IOException e) {
             e.printStackTrace();
         }

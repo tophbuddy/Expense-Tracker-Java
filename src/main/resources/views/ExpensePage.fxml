@@ -36,6 +36,7 @@
                        AnchorPane.bottomAnchor="50">
                 <columns>
                     <TableColumn fx:id="dateColumn" text="Date" />
+                    <TableColumn fx:id="titleColumn" text="Title" />
                     <TableColumn fx:id="categoryColumn" text="Category" />
                     <TableColumn fx:id="subCategoryColumn" text="Sub-Category" />
                     <TableColumn fx:id="descriptionColumn" text="Description" />

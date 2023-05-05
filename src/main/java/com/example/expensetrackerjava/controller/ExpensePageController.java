@@ -2,6 +2,8 @@ package com.example.expensetrackerjava.controller;
 
 import com.example.expensetrackerjava.ExpenseTrackerApplication;
 import com.example.expensetrackerjava.model.Expense;
+import com.example.expensetrackerjava.repository.daos.ExpenseDao;
+import com.example.expensetrackerjava.session.SessionManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -20,6 +22,12 @@ import java.time.LocalDate;
 public class ExpensePageController {
     @FXML
     private TableView<Expense> expenseTable = new TableView<>();
+
+    @FXML
+    private TableColumn<Expense, Integer> idColumn;
+
+    @FXML
+    private TableColumn<Expense, String> titleColumn;
 
     @FXML
     private TableColumn<Expense, LocalDate> dateColumn;
@@ -41,9 +49,10 @@ public class ExpensePageController {
 
     private ObservableList<Expense> expenses;
 
+    private ExpenseDao expenseDao;
+
     @FXML
     public void initialize() {
-
 //        expenses = FXCollections.observableArrayList();
 //        expenses.add(new Expense(LocalDate.of(2023,4,2), "Food", "Groceries",
 //                "Grocery shopping for dinner", 104.50));
@@ -53,12 +62,12 @@ public class ExpensePageController {
 //                "Bottle and the Barber haircut", 50.75));
 //        expenses.add(new Expense(LocalDate.of(2023,4,22), "Entertainment", "Alcohol",
 //                "Drinks at Rumba", 64.20));
-//
-//        dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
-//        categoryColumn.setCellValueFactory(new PropertyValueFactory<>("category"));
-//        subCategoryColumn.setCellValueFactory(new PropertyValueFactory<>("subCategory"));
-//        descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
-//        amountColumn.setCellValueFactory(new PropertyValueFactory<>("amount"));
+        dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
+        titleColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
+        categoryColumn.setCellValueFactory(new PropertyValueFactory<>("category"));
+        subCategoryColumn.setCellValueFactory(new PropertyValueFactory<>("subCategory"));
+        descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
+        amountColumn.setCellValueFactory(new PropertyValueFactory<>("amount"));
 //
 //        expenseTable.setItems(expenses);
     }
@@ -72,5 +81,10 @@ public class ExpensePageController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private void loadCurrentUserExpenses() {
+        int userId = SessionManager.getInstance().getCurrentUser().getUserId();
+        expenses = FXCollections.observableArrayList(expenseDao.getAllExpenses(userId));
     }
 }

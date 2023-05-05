@@ -11,5 +11,5 @@ public interface ExpenseDaoInterface {
     List<Expense> getAllExpenses(int userId);
     boolean updateExpense(Expense expense);
     boolean deleteExpense(int expenseId);
-    List<Expense> searchExpenses(int userId, LocalDate startDate, LocalDate endDate, String category, String keyword);
+    List<Expense> searchExpenses(int userId, String title, LocalDate startDate, LocalDate endDate, String category, String keyword);
 }

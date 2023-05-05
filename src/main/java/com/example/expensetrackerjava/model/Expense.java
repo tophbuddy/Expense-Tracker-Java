@@ -18,14 +18,16 @@ public class Expense {
     // need to add user variable for database storage
 
     private final SimpleIntegerProperty expenseId;
+    private final SimpleStringProperty title;
     private final SimpleObjectProperty<LocalDate> date;
     private final SimpleObjectProperty<Category> category;
     private final SimpleStringProperty description;
     private final SimpleDoubleProperty amount;
     private final SimpleIntegerProperty userId;
 
-    public Expense(int expenseId, LocalDate date, Category category, String description, double amount, int userId) {
+    public Expense(int expenseId, String title, LocalDate date, Category category, String description, double amount, int userId) {
         this.expenseId = new SimpleIntegerProperty(expenseId);
+        this.title = new SimpleStringProperty(title);
         this.date = new SimpleObjectProperty<>(date);
         this.category = new SimpleObjectProperty<>(category);
         this.description = new SimpleStringProperty(description);
@@ -33,8 +35,9 @@ public class Expense {
         this.userId = new SimpleIntegerProperty(userId);
     }
 
-    public Expense(LocalDate date, Category category, String description, double amount) {
+    public Expense(String title, LocalDate date, Category category, String description, double amount) {
         this.expenseId = new SimpleIntegerProperty(0);
+        this.title = new SimpleStringProperty(title);
         this.date = new SimpleObjectProperty<>(date);
         this.category = new SimpleObjectProperty<>(category);
         this.description = new SimpleStringProperty(description);
@@ -44,6 +47,7 @@ public class Expense {
 
     public Expense() {
         this.expenseId = new SimpleIntegerProperty(0);
+        this.title = new SimpleStringProperty("");
         this.date = new SimpleObjectProperty<LocalDate>(null);
         this.category = new SimpleObjectProperty<Category>(null);
         this.description = new SimpleStringProperty("");
@@ -61,6 +65,18 @@ public class Expense {
 
     public void setExpenseId(int expenseId) {
         this.expenseId.set(expenseId);
+    }
+
+    public String getTitle() {
+        return title.get();
+    }
+
+    public SimpleStringProperty titleProperty() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title.set(title);
     }
 
     public LocalDate getDate() {
@@ -127,6 +143,7 @@ public class Expense {
     public String toString() {
         return "Expense{" +
                 "expenseId=" + expenseId +
+                ", title=" + title +
                 ", date=" + date +
                 ", category=" + category +
                 ", description=" + description +
@@ -140,13 +157,14 @@ public class Expense {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Expense expense = (Expense) o;
-        return Objects.equals(expenseId, expense.expenseId) && Objects.equals(date, expense.date) &&
-                Objects.equals(category, expense.category) && Objects.equals(description, expense.description) &&
-                Objects.equals(amount, expense.amount) && Objects.equals(userId, expense.userId);
+        return Objects.equals(expenseId, expense.expenseId) && Objects.equals(title, expense.title) &&
+                Objects.equals(date, expense.date) && Objects.equals(category, expense.category) &&
+                Objects.equals(description, expense.description) && Objects.equals(amount, expense.amount) &&
+                Objects.equals(userId, expense.userId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(expenseId, date, category, description, amount, userId);
+        return Objects.hash(expenseId, title, date, category, description, amount, userId);
     }
 }
