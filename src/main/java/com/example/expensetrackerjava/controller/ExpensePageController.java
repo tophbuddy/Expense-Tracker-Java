@@ -2,6 +2,7 @@ package com.example.expensetrackerjava.controller;
 
 import com.example.expensetrackerjava.ExpenseTrackerApplication;
 import com.example.expensetrackerjava.model.Expense;
+import com.example.expensetrackerjava.repository.DatabaseConnection;
 import com.example.expensetrackerjava.repository.daos.ExpenseDao;
 import com.example.expensetrackerjava.session.SessionManager;
 import javafx.collections.FXCollections;
@@ -13,7 +14,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -21,7 +21,7 @@ import java.time.LocalDate;
 
 public class ExpensePageController {
     @FXML
-    private TableView<Expense> expenseTable = new TableView<>();
+    private TableView<Expense> expenseTableView;
 
     @FXML
     private TableColumn<Expense, Integer> idColumn;
@@ -51,9 +51,12 @@ public class ExpensePageController {
 
     private ExpenseDao expenseDao;
 
+    public ExpensePageController() {
+        expenseDao = new ExpenseDao(DatabaseConnection.getInstance().getConnection());
+    }
+
     @FXML
     public void initialize() {
-//        expenses = FXCollections.observableArrayList();
 //        expenses.add(new Expense(LocalDate.of(2023,4,2), "Food", "Groceries",
 //                "Grocery shopping for dinner", 104.50));
 //        expenses.add(new Expense(LocalDate.of(2023,4,7), "Housing", "Mortgage",
@@ -68,8 +71,7 @@ public class ExpensePageController {
         subCategoryColumn.setCellValueFactory(new PropertyValueFactory<>("subCategory"));
         descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
         amountColumn.setCellValueFactory(new PropertyValueFactory<>("amount"));
-//
-//        expenseTable.setItems(expenses);
+        loadCurrentUserExpenses();
     }
 
     @FXML
@@ -83,8 +85,26 @@ public class ExpensePageController {
         }
     }
 
+    @FXML
+    private void handleAddExpense(ActionEvent event) {
+        Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        currentStage.close();
+        ExpenseTrackerApplication.getInstance().showAddExpensePage();
+    }
+
+    @FXML
+    private void handleUpdateExpense() {
+
+    }
+
+    @FXML
+    private void handleDeleteExpense() {
+
+    }
+
     private void loadCurrentUserExpenses() {
         int userId = SessionManager.getInstance().getCurrentUser().getUserId();
         expenses = FXCollections.observableArrayList(expenseDao.getAllExpenses(userId));
+        expenseTableView.setItems(expenses);
     }
 }

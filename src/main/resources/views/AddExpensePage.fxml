@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Group?>
+<AnchorPane prefHeight="400.0"
+            prefWidth="600.0"
+            xmlns="http://javafx.com/javafx/11.0.2"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.expensetrackerjava.controller.AddExpensePageController">
+    <stylesheets>
+        <URL value="@../css/AddExpensePage.css" />
+    </stylesheets>
+    <children>
+        <StackPane AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <Group StackPane.alignment="CENTER">
+                    <children>
+                        <VBox alignment="CENTER" spacing="20" styleClass="add-expense-form">
+                            <Label styleClass="title" text="Add New Expense" />
+                            <GridPane alignment="CENTER" hgap="10" vgap="10">
+                                <padding>
+                                    <Insets top="20" right="20" bottom="20" left="20"/>
+                                </padding>
+                                <Label text="Title:" GridPane.rowIndex="0"/>
+                                <TextField fx:id="titleField" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                                <Label text="Description:" GridPane.rowIndex="1"/>
+                                <TextField fx:id="descriptionField" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                                <Label text="Amount" GridPane.rowIndex="2"/>
+                                <Spinner fx:id="amountSpinner" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                                <Label text="Date:" GridPane.rowIndex="3"/>
+                                <DatePicker fx:id="datePicker" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+                                <Label text="Category" GridPane.rowIndex="4"/>
+                                <ComboBox fx:id="categoryField" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+                                <Label text="Category" GridPane.rowIndex="5"/>
+                                <ComboBox fx:id="subCategoryField" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+                            </GridPane>
+                        </VBox>
+                    </children>
+                </Group>
+            </children>
+        </StackPane>
+    </children>
+</AnchorPane>

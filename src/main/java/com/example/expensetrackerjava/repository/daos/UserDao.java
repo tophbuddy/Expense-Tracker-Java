@@ -58,17 +58,17 @@ public class UserDao implements UserDaoInterface {
             selectUserStmt.setString(1, username);
             selectUserStmt.setString(2, password);
 
-            ResultSet resultSet = selectUserStmt.executeQuery();
+            try (ResultSet resultSet = selectUserStmt.executeQuery()) {
+                if (resultSet.next()) {
+                    int userId = resultSet.getInt("id");
+                    String firstName = resultSet.getString("first_name");
+                    String lastName = resultSet.getString("last_name");
+                    String email = resultSet.getString("email");
+                    String phoneNumber = resultSet.getString("phone_number");
 
-            if (resultSet.next()) {
-                int userId = resultSet.getInt("id");
-                String firstName = resultSet.getString("first_name");
-                String lastName = resultSet.getString("last_name");
-                String email = resultSet.getString("email");
-                String phoneNumber = resultSet.getString("phone_number");
-
-                user = new User(userId, username, password, firstName, lastName, email, phoneNumber);
-                return Optional.of(user);
+                    user = new User(userId, username, password, firstName, lastName, email, phoneNumber);
+                    return Optional.of(user);
+                }
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -97,7 +97,7 @@ public class UserDao implements UserDaoInterface {
 
     @Override
     public boolean deleteUser(int id) {
-        String deleteUser = "DELETE FROM users WHERE user_id = ? ";
+        String deleteUser = "DELETE FROM users WHERE id = ? ";
         try (PreparedStatement deleteUserStmt = connection.prepareStatement(deleteUser)) {
             deleteUserStmt.setInt(1, id);
 

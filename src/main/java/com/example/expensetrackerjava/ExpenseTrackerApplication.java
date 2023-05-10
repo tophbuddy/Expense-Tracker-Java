@@ -71,6 +71,19 @@ public class ExpenseTrackerApplication extends Application {
         }
     }
 
+    public void showAddExpensePage() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/AddExpensePage.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root, 800, 600);
+            primaryStage.setScene(scene);
+            primaryStage.setTitle("Add New Expense");
+            primaryStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void main(String[] args) {
         launch(args);
     }

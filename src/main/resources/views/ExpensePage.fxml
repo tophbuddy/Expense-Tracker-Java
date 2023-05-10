@@ -29,7 +29,7 @@
         <children>
             <Button fx:id="homePageButton" text="Home" layoutX="14" layoutY="14" onAction="#goToHomePage"
                     mnemonicParsing="false" AnchorPane.bottomAnchor="10" AnchorPane.rightAnchor="10" />
-            <TableView fx:id="expenseTable"
+            <TableView fx:id="expenseTableView"
                        AnchorPane.topAnchor="10"
                        AnchorPane.leftAnchor="10"
                        AnchorPane.rightAnchor="10"

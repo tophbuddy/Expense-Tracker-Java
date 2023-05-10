@@ -3,18 +3,20 @@ package com.example.expensetrackerjava.repository.daos;
 import com.example.expensetrackerjava.model.Category;
 import com.example.expensetrackerjava.model.Expense;
 import com.example.expensetrackerjava.repository.DatabaseConnection;
+import com.example.expensetrackerjava.utils.Constants;
 
 import java.sql.*;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ExpenseDao implements ExpenseDaoInterface {
 
-    private final Connection connection;
+    private Connection connection;
 
-    public ExpenseDao(DatabaseConnection databaseConnection) {
-        this.connection = databaseConnection.getConnection();
+    public ExpenseDao(Connection connection) {
+        this.connection = connection;
     }
 
     @Override
@@ -41,7 +43,30 @@ public class ExpenseDao implements ExpenseDaoInterface {
 
     @Override
     public Expense getExpense(int expenseId) {
-        return null;
+        String getExpense = "SELECT * FROM expenses WHERE id = ?";
+        Expense expense = null;
+
+        try (PreparedStatement getExpenseStmt = connection.prepareStatement(getExpense)) {
+            getExpenseStmt.setInt(1, expenseId);
+
+            try (ResultSet rs = getExpenseStmt.executeQuery();) {
+                if (rs.next()) {
+                    int id = rs.getInt("id");
+                    int userId = rs.getInt("user_id");
+                    int categoryId = rs.getInt("category_id");
+                    String title = rs.getString("title");
+                    LocalDate date = rs.getDate("date").toLocalDate();
+                    String description = rs.getString("description");
+                    double amount = rs.getDouble("amount");
+
+                    Category category = getCategoryById(categoryId);
+                    expense = new Expense(expenseId, title, date, category, description, amount, userId);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return expense;
     }
 
     @Override
@@ -63,21 +88,45 @@ public class ExpenseDao implements ExpenseDaoInterface {
 
                 Category category = getCategoryById(categoryId);
                 Expense expense = new Expense(expenseId, title, date, category,description, amount, resultUserId);
+                expenses.add(expense);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return null;
+        return expenses;
     }
 
     @Override
     public boolean updateExpense(Expense expense) {
-        return false;
+        String updateExpense = "UPDATE expenses SET title = ?, date = ?, description = ?, category_id = ?, amount = ?";
+        try (PreparedStatement updateExpenseStmt = connection.prepareStatement(updateExpense)) {
+            updateExpenseStmt.setString(1, expense.getTitle());
+            updateExpenseStmt.setDate(2, Date.valueOf(expense.getDate()));
+            updateExpenseStmt.setString(3, expense.getDescription());
+            updateExpenseStmt.setInt(4, expense.getCategory().getCategoryId());
+            updateExpenseStmt.setDouble(5, expense.getAmount());
+
+            int affectedRows = updateExpenseStmt.executeUpdate();
+            return affectedRows > Constants.MIN_AFFECTED_ROWS;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     @Override
     public boolean deleteExpense(int expenseId) {
-        return false;
+        String deleteExpense = "DELETE FROM expenses WHERE id = ?";
+
+        try (PreparedStatement deleteExpenseStmt = connection.prepareStatement(deleteExpense)) {
+            deleteExpenseStmt.setInt(1, expenseId);
+
+            int affectedRows = deleteExpenseStmt.executeUpdate();
+            return affectedRows > Constants.MIN_AFFECTED_ROWS;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     @Override
@@ -91,13 +140,13 @@ public class ExpenseDao implements ExpenseDaoInterface {
         String getCategory = "SELECT * FROM categories WHERE id = ?";
         try (PreparedStatement getCategoryStmt = connection.prepareStatement(getCategory)) {
             getCategoryStmt.setInt(1, categoryId);
-            ResultSet rs = getCategoryStmt.executeQuery();
-
-            if (rs.next()) {
-                int id = rs.getInt("id");
-                String categoryName = rs.getString("category_name");
-                String subCategoryName = rs.getString("sub_category_name");
-                category = new Category(id, categoryName, subCategoryName);
+            try (ResultSet rs = getCategoryStmt.executeQuery()) {
+                if (rs.next()) {
+                    int id = rs.getInt("id");
+                    String categoryName = rs.getString("category_name");
+                    String subCategoryName = rs.getString("sub_category_name");
+                    category = new Category(id, categoryName, subCategoryName);
+                }
             }
         } catch (SQLException e) {
             e.printStackTrace();
