@@ -39,7 +39,7 @@
 
 /* Style for registration confirmation button */
 .registration-form .registration-button {
-    -fx-background-color: #2a9df4;
+    -fx-background-color: black;
     -fx-text-fill: white;
     -fx-border-radius: 5;
     -fx-background-radius: 5;

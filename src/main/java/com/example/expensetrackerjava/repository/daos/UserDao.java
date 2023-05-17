@@ -1,7 +1,6 @@
 package com.example.expensetrackerjava.repository.daos;
 
 import com.example.expensetrackerjava.model.User;
-import com.example.expensetrackerjava.repository.DatabaseConnection;
 import com.example.expensetrackerjava.utils.Constants;
 
 import java.sql.*;

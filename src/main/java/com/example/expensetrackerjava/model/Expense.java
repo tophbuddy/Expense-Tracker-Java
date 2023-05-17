@@ -35,14 +35,14 @@ public class Expense {
         this.userId = new SimpleIntegerProperty(userId);
     }
 
-    public Expense(String title, LocalDate date, Category category, String description, double amount) {
+    public Expense(String title, LocalDate date, Category category, String description, double amount, int userId) {
         this.expenseId = new SimpleIntegerProperty(0);
         this.title = new SimpleStringProperty(title);
         this.date = new SimpleObjectProperty<>(date);
         this.category = new SimpleObjectProperty<>(category);
         this.description = new SimpleStringProperty(description);
         this.amount = new SimpleDoubleProperty(amount);
-        this.userId = new SimpleIntegerProperty(0);
+        this.userId = new SimpleIntegerProperty(userId);
     }
 
     public Expense() {
